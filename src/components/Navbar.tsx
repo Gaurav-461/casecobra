@@ -9,7 +9,7 @@ const Navbar = async () => {
   const user = await getUser();
   const isAdmin = user?.email === process.env.ADMIN_EMAIL;
 
-  console.log("User info:-", user)
+  // console.log("User info:-", user)
   return (
     <nav className="sticky inset-x-0 top-0 z-[100] w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all duration-300">
       <MaxWidthWrapper>
@@ -34,7 +34,7 @@ const Navbar = async () => {
 
                 {isAdmin && (
                   <Link
-                    href="/api/auth/logout"
+                    href="/dashboard"
                     className={buttonVariants({
                       size: "sm",
                       variant: "ghost",
