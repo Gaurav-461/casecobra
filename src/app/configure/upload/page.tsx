@@ -7,10 +7,9 @@ import { Image, Loader2, MousePointerSquareDashed } from "lucide-react";
 import Dropzone, { FileRejection } from "react-dropzone";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useRouter } from "next/navigation";
-import { useToast } from "@/hooks/use-toast";
+import { toast as sonnerToast } from "sonner";
 
 const Page = () => {
-  const { toast } = useToast();
   const [isDragOver, setIsDragOver] = useState<boolean>(false);
   const [uploadProgress, setUploadProgress] = useState<number>(0);
   const router = useRouter();
@@ -29,10 +28,8 @@ const Page = () => {
       setUploadProgress(p);
     },
     onUploadError: (error: Error) => {
-      toast({
-        title: error.name,
+      sonnerToast.error( error.name,{
         description: error.message,
-        variant: "destructive",
       });
     },
   });
@@ -42,10 +39,8 @@ const Page = () => {
 
     setIsDragOver(false);
 
-    toast({
-      title: `${file.file.type} type is not supported`,
+    sonnerToast.error(`${file.file.type} type is not supported`,{
       description: "Please choose a PNG, JPG, or JPEG image instead",
-      variant: "destructive",
     });
   };
 

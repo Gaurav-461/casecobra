@@ -36,7 +36,6 @@ import {
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check, ChevronsUpDown, Loader2 } from "lucide-react";
 import { BASE_PRICE } from "@/config/products";
-import { useToast } from "@/hooks/use-toast";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useMutation } from "@tanstack/react-query";
 import { SaveConfigArgs, saveConfig as _saveConfig } from "./action";
@@ -54,7 +53,6 @@ const DesignConfigurator = ({
   imageUrl,
   imageDimensions,
 }: DesignConfiguratorProps) => {
-  const { toast } = useToast();
   const router = useRouter();
 
   const { mutate: saveConfig } = useMutation({
@@ -63,10 +61,8 @@ const DesignConfigurator = ({
       await Promise.all([saveConfiguration(), _saveConfig(args)]);
     },
     onError: (error) => {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: "There was an error on our end. Please try again later.",
+      sonnerToast.error("Uh oh! Something went wrong.",{
+        description: error.message,
       });
     },
     onSuccess: () => {
@@ -154,11 +150,9 @@ const DesignConfigurator = ({
 
       await startUpload([file], { configId });
     } catch (error) {
-      toast({
-        title: "Please try again later",
+      sonnerToast.error("Please try again later",{
         description:
           error instanceof Error ? error.message : "An unknown error occurred",
-        variant: "destructive",
       });
     }
   }

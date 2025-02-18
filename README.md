@@ -13,7 +13,7 @@ Built with the Next.js 15 App Router, Postgres, TypeScript, Tailwind & Kinde Aut
 - 🖥️ Drag-and-drop file uploads
 - 🛍️ Customers can purchase directly from you
 - 🌟 Clean, modern UI on top of shadcn-ui
-- 🛒 Completely custom phone case configurator
+- 🛒 Completely custom phone case configuration
 - 🔑 Authentication using Kinde
 - ✉️ Beautiful thank-you email after purchase
 - ✅ Apple-inspired configuration design
@@ -29,6 +29,18 @@ To get started with this project, run
 ```
 
 and copy the .env.example variables into a separate .env file, fill them out & and that's all you need to get started!
+
+Then run any of these command to install all dependencies
+
+```bash
+  npm install
+
+  pnpm install
+
+  yarn install
+  
+  bun install
+```
 
 
 ## Acknowledgements

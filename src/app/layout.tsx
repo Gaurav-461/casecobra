@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Recursive } from "next/font/google";
 
 import "./globals.css";
 import { Navbar, Footer } from "@/components";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "sonner";
 import Provider from "@/components/Provider";
 
 const recursive = Recursive({ subsets: ["latin"] });
@@ -40,7 +40,7 @@ export default function RootLayout({
           </div>
           <Footer />
         </main>
-        <Toaster />
+        <Toaster richColors position="bottom-right"/>
       </body>
     </html>
   );

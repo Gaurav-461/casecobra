@@ -14,13 +14,12 @@ import { formatPrice } from "@/lib/utils";
 import { COLORS, MODELS } from "@/validator/option-validator";
 import Phone from "@/components/Phone";
 import { createCheckOutSession } from "./action";
-import { useToast } from "@/hooks/use-toast";
+import { toast as sonnerToast } from "sonner";
 import LoginModal from "@/components/LoginModal";
 
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false)
-  const { toast } = useToast();
   const router = useRouter();
   const { user } = useKindeBrowserClient();
 
@@ -52,21 +51,17 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
       if (url) {
         router.push(url);
       } else {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
+        sonnerToast.error("Uh oh! Something went wrong.",{
           description: "Unable to retrieve payment URL.",
         });
         throw new Error("Unable to retrieve payment URL.");
       }
     },
     onError: (error) => {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
+      sonnerToast.error("Uh oh! Something went wrong.",{
         description: "There was an error on our end. Please try again later.",
       });
-      console.error("Error :: ", error);
+      console.error("Error occurred in createPaymentSession:-", error);
     },
   });
 
