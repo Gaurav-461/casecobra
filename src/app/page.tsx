@@ -298,7 +298,7 @@ export default function Home() {
 
       {/* FAQ section */}
       <MaxWidthWrapper>
-        <section className="bg-white py-24">
+        <section className="py-24">
           <h2 className="mb-12 text-center text-3xl font-bold">
             Frequently Asked Questions
           </h2>
