@@ -22,6 +22,8 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false)
   const router = useRouter();
   const { user } = useKindeBrowserClient();
+  
+  console.log("user", user)
 
   useEffect(() => setShowConfetti(true), []);
 
