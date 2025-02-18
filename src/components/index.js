@@ -4,4 +4,6 @@ import Navbar from "./Navbar";
 import { Icons } from "./Icons";
 import Reviews from "./Reviews";
 import Footer from "./Footer";
-export { MaxWidthWrapper, Phone, Navbar, Icons, Reviews, Footer };
+import Steps from "./Steps";
+import HandleComponent from "./HandleComponent";
+export { MaxWidthWrapper, Phone, Navbar, Icons, Reviews, Footer, Steps, HandleComponent };

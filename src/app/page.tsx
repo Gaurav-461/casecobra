@@ -297,8 +297,8 @@ export default function Home() {
       </section>
 
       {/* FAQ section */}
-      <section className="bg-white py-24">
-        <MaxWidthWrapper>
+      <MaxWidthWrapper>
+        <section className="bg-white py-24">
           <h2 className="mb-12 text-center text-3xl font-bold">
             Frequently Asked Questions
           </h2>
@@ -319,8 +319,8 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </MaxWidthWrapper>
-      </section>
+        </section>
+      </MaxWidthWrapper>
     </div>
   );
 }

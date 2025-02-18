@@ -26,7 +26,7 @@ const Steps = () => {
 
   return (
     <ol className="lg:border-1 rounded-md bg-white lg:flex lg:rounded-none lg:border-x lg:border-gray-200">
-      {STEPS.map((step, index: number) => {
+      {STEPS.map((step, index) => {
         const isCurrent = pathname.endsWith(step.url);
         const isCompleted = STEPS.slice(index + 1).some((step) =>
           pathname.endsWith(step.url),

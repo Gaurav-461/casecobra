@@ -3,13 +3,14 @@ import MaxWidthWrapper from "./MaxWidthWrapper";
 import { buttonVariants } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Image from "next/image";
 
 const Navbar = async () => {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
   const isAdmin = user?.email === process.env.ADMIN_EMAIL;
 
-  // console.log("User info:-", user)
+  // console.log("User info:-", user);
   return (
     <nav className="sticky inset-x-0 top-0 z-[100] w-full border-b border-gray-200 bg-white/75 backdrop-blur-lg transition-all duration-300">
       <MaxWidthWrapper>
@@ -54,6 +55,14 @@ const Navbar = async () => {
                   Create case
                   <ArrowRight className="ml-1.5 h-5 w-5" />
                 </Link>
+
+                <Image
+                  src={user.picture || ""}
+                  alt="user image"
+                  width={32}
+                  height={32}
+                  className="rounded-full object-contain"
+                />
               </>
             ) : (
               // if user not log-in
@@ -78,7 +87,7 @@ const Navbar = async () => {
                   Login
                 </Link>
 
-                <div className="h-2/3 w-px bg-zinc-200"/>
+                <div className="h-2/3 w-px hidden sm:block bg-zinc-200" />
 
                 <Link
                   href="/api/auth/login"

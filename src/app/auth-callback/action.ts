@@ -1,0 +1,35 @@
+"use server";
+
+import { db } from "@/db";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+
+export const getAuthStatus = async () => {
+  try {
+    const { getUser } = getKindeServerSession();
+    const user = await getUser();
+  
+    if (!user?.id || !user?.email) {
+      throw new Error("Invalid user data.");
+    }
+  
+    const existingUser = await db.user.findFirst({
+      where: {
+        id: user.id,
+      },
+    });
+  
+    if (!existingUser) {
+      await db.user.create({
+        data: {
+          id: user.id,
+          email: user.email,
+        },
+      });
+    }
+  
+    return { success: true };
+  } catch (error: any) {
+    console.log("Error occurred in auth-callback's getAuthStatus function:-", error.message)
+    return { success: false };
+  }
+};
