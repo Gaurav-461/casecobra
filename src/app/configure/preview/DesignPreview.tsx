@@ -23,7 +23,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const router = useRouter();
   const { user } = useKindeBrowserClient();
 
-  useEffect(() => setShowConfetti(true));
+  useEffect(() => setShowConfetti(true), []);
 
   const { id, color, model, finish, material } = configuration;
 

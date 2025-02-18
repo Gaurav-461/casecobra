@@ -38,7 +38,8 @@ export async function POST(req: Request) {
       const billingAddress = session.customer_details!.address;
       const shippingAddress = session.shipping_details!.address;
 
-      const updateOrder = await db.order.update({
+      // update order
+      await db.order.update({
 
         where: {
           id: orderId,
@@ -68,9 +69,10 @@ export async function POST(req: Request) {
         },
       });
     }
-    
-  } catch (error: any) {
-    console.log("Error occurred in stripe webhook:-",error.message);
+
+    return NextResponse.json({ result: event, ok: true }, { status: 200 });
+  } catch (error) {
+    console.log("Error occurred in stripe webhook:-",error);
 
     return NextResponse.json(
       { message: "Something went wrong in stripe webhook" },

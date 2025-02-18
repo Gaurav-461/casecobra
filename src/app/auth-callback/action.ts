@@ -28,8 +28,8 @@ export const getAuthStatus = async () => {
     }
   
     return { success: true };
-  } catch (error: any) {
-    console.log("Error occurred in auth-callback's getAuthStatus function:-", error.message)
+  } catch (error) {
+    console.log("Error occurred in auth-callback's getAuthStatus function:-", error)
     return { success: false };
   }
 };

@@ -11,12 +11,15 @@ interface PageProps {
 
   // searchParams: {
   //   id: string | string[] | undefined;
-  // };
+  // }
+
+  // searchParams: URLSearchParams
 }
 
 const Page = async ({ searchParams }: PageProps) => {
   // make db call
-  const { id } = await searchParams;
+  const { id } = searchParams;
+  console.log("searchParams:-", searchParams);
 
   if (!id || typeof id !== "string") {
     return notFound();
@@ -34,7 +37,6 @@ const Page = async ({ searchParams }: PageProps) => {
 
   return (
     <>
-      <title>Configuration | Design</title>
       <DesignConfigurator
         configId={configId}
         imageUrl={imageUrl}
