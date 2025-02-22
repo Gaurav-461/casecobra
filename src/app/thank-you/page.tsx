@@ -1,11 +1,13 @@
+import { Suspense } from "react";
 import ThankYou from "./ThankYou";
 
-const page = () => {
+const ThankYouPage = () => {
   return (
-    <div>
+    <Suspense>
+      <title>Thank You</title>
       <ThankYou />
-    </div>
+    </Suspense>
   );
 }
 
-export default page;
+export default ThankYouPage;

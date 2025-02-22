@@ -4,7 +4,7 @@ import { Geist, Geist_Mono, Recursive } from "next/font/google";
 import "./globals.css";
 import { Navbar, Footer } from "@/components";
 import { Toaster } from "sonner";
-import Provider from "@/components/Provider";
+import QueryProvider from "@/components/QueryProvider";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
@@ -36,11 +36,11 @@ export default function RootLayout({
         <Navbar />
         <main className="grainy-light flex min-h-[calc(100vh-3.5rem-1px)] flex-col">
           <div className="flex h-full flex-1 flex-col">
-            <Provider>{children}</Provider>
+            <QueryProvider>{children}</QueryProvider>
           </div>
           <Footer />
         </main>
-        <Toaster richColors position="bottom-right"/>
+        <Toaster richColors position="bottom-right" />
       </body>
     </html>
   );
