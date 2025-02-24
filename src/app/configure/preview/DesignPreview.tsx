@@ -27,6 +27,17 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   console.log("alreadyLoggedInUser", alreadyLoggedInUser);
   console.log("user", user);
 
+  if(!user && !alreadyLoggedInUser) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <LoginModal
+          isOpen={isLoginModalOpen}
+          setIsOpen={setIsLoginModalOpen}
+        />
+      </div>
+    )
+  }
+
   useEffect(() => setShowConfetti(true), []);
 
   const { id, color, model, finish, material } = configuration;
