@@ -19,11 +19,12 @@ import LoginModal from "@/components/LoginModal";
 
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const [showConfetti, setShowConfetti] = useState(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false)
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
   const router = useRouter();
-  const { user } = useKindeBrowserClient();
-  
-  console.log("user", user)
+  const { getUser } = useKindeBrowserClient();
+  const user = getUser();
+
+  console.log("user", user);
 
   useEffect(() => setShowConfetti(true), []);
 
@@ -53,14 +54,14 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
       if (url) {
         router.push(url);
       } else {
-        sonnerToast.error("Uh oh! Something went wrong.",{
+        sonnerToast.error("Uh oh! Something went wrong.", {
           description: "Unable to retrieve payment URL.",
         });
         throw new Error("Unable to retrieve payment URL.");
       }
     },
     onError: (error) => {
-      sonnerToast.error("Uh oh! Something went wrong.",{
+      sonnerToast.error("Uh oh! Something went wrong.", {
         description: "There was an error on our end. Please try again later.",
       });
       console.error("Error occurred in createPaymentSession:-", error);
@@ -81,7 +82,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
     <>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 flex select-none justify-center overflow-hidden"
+        className="pointer-events-none flex select-none justify-center overflow-hidden"
       >
         <Confetti
           active={showConfetti}
@@ -89,7 +90,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
         />
       </div>
 
-      <LoginModal isOpen={isLoginModalOpen} setIsOpen={setIsLoginModalOpen}/>
+      <LoginModal isOpen={isLoginModalOpen} setIsOpen={setIsLoginModalOpen} />
 
       <section className="mt-20 flex flex-col items-center text-sm sm:grid sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
         <div className="sm:col-span-4 md:col-span-3 md:row-span-2 md:row-end-2">
@@ -173,7 +174,12 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
                 loadingText="loading"
                 className="px-4 sm:px-6 md:px-8"
               >
-                Check out {isPending ? <Loader2  className="ml-1.5 inline size-4 animate-spin"/> : <ArrowRight className="ml-1.5 inline size-4" />}
+                Check out{" "}
+                {isPending ? (
+                  <Loader2 className="ml-1.5 inline size-4 animate-spin" />
+                ) : (
+                  <ArrowRight className="ml-1.5 inline size-4" />
+                )}
               </Button>
             </div>
           </div>
