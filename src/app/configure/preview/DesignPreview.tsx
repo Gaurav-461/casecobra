@@ -21,9 +21,10 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const [showConfetti, setShowConfetti] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
   const router = useRouter();
-  const { getUser } = useKindeBrowserClient();
-  const user = getUser();
+  const { user, getUser } = useKindeBrowserClient();
+  const alreadyLoggedInUser = getUser();
 
+  console.log("alreadyLoggedInUser", alreadyLoggedInUser);
   console.log("user", user);
 
   useEffect(() => setShowConfetti(true), []);
