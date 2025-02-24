@@ -1,5 +1,11 @@
 import type { Dispatch, SetStateAction } from "react";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "./ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
 import Image from "next/image";
 import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs";
 import { buttonVariants } from "./ui/button";
@@ -9,12 +15,12 @@ const LoginModal = ({
   setIsOpen,
 }: {
   isOpen: boolean;
-  setIsOpen: Dispatch< SetStateAction<boolean> >;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
     <>
       <Dialog onOpenChange={setIsOpen} open={isOpen}>
-        <DialogContent className="absolute z-[999999]">
+        <DialogContent className="z-[999999]">
           <DialogHeader>
             <div className="relative mx-auto mb-2 size-24">
               <Image
@@ -24,25 +30,29 @@ const LoginModal = ({
                 fill
               />
             </div>
-            <DialogTitle className="text-3xl text-center font-bold tracking-tight text-gray-900">
+            <DialogTitle className="text-center text-3xl font-bold tracking-tight text-gray-900">
               Log in to continue
             </DialogTitle>
-            <DialogDescription className="text-base text-center py-2">
+            <DialogDescription className="py-2 text-center text-base">
               <span className="font-medium text-zinc-900">
                 Your configuration was saved!
-              </span>{' '}
+              </span>{" "}
               Please login or create an account to complete your purchase.
             </DialogDescription>
           </DialogHeader>
 
           <div className="grid grid-cols-2 gap-6 divide-x divide-gray-200">
-            <LoginLink className={buttonVariants({
-              variant: "outline",
-              // className: "bg-primary text-primary-foreground"
-            })}>
+            <LoginLink
+              className={buttonVariants({
+                variant: "outline",
+                // className: "bg-primary text-primary-foreground"
+              })}
+            >
               Login
             </LoginLink>
-            <RegisterLink className={buttonVariants({ variant: "default" })}>Sign up</RegisterLink>
+            <RegisterLink className={buttonVariants({ variant: "default" })}>
+              Sign up
+            </RegisterLink>
           </div>
         </DialogContent>
       </Dialog>
