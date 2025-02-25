@@ -7,7 +7,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
     <MaxWidthWrapper className="flex flex-1 flex-col">
       <Steps />
       {children}
-      <Toaster />
+      <Toaster position="top-center"/>
     </MaxWidthWrapper>
   );
 };
