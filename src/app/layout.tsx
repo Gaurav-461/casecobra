@@ -5,6 +5,7 @@ import "./globals.css";
 import { Navbar, Footer } from "@/components";
 import { Toaster } from "sonner";
 import QueryProvider from "@/components/QueryProvider";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${recursive.className} antialiased`}
       >
+        {/* <ThemeProvider attribute="class"> */}
         <Navbar />
         <main className="grainy-light flex min-h-[calc(100vh-3.5rem-1px)] flex-col">
           <div className="flex h-full flex-1 flex-col">
@@ -41,6 +43,7 @@ export default function RootLayout({
           <Footer />
         </main>
         <Toaster richColors position="bottom-right" />
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
