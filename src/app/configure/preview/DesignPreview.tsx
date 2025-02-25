@@ -10,7 +10,7 @@ import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 import { Button } from "@/components/ui/button";
 import { BASE_PRICE, PRODUCTS_PRICES } from "@/config/products";
-import { formatPrice } from "@/lib/utils";
+import { cn, formatPrice } from "@/lib/utils";
 import { COLORS, MODELS } from "@/validator/option-validator";
 import Phone from "@/components/Phone";
 import { createCheckOutSession } from "./action";
@@ -18,27 +18,16 @@ import { toast as sonnerToast } from "sonner";
 import LoginModal from "@/components/LoginModal";
 
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
-  const [showConfetti, setShowConfetti] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
   const router = useRouter();
   const { user, getUser } = useKindeBrowserClient();
   const alreadyLoggedInUser = getUser();
+  
+  const [showConfetti, setShowConfetti] = useState(false);
+  useEffect(() => setShowConfetti(true), []);
 
   console.log("alreadyLoggedInUser", alreadyLoggedInUser);
   console.log("user", user);
-
-  if(!user && !alreadyLoggedInUser) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <LoginModal
-          isOpen={isLoginModalOpen}
-          setIsOpen={setIsLoginModalOpen}
-        />
-      </div>
-    )
-  }
-
-  useEffect(() => setShowConfetti(true), []);
 
   const { id, color, model, finish, material } = configuration;
 
@@ -104,15 +93,15 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
       <LoginModal isOpen={isLoginModalOpen} setIsOpen={setIsLoginModalOpen} />
 
-      <section className="mt-20 flex flex-col items-center text-sm sm:grid sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
-        <div className="sm:col-span-4 md:col-span-3 md:row-span-2 md:row-end-2">
+      <section className="mt-20 flex flex-col items-center text-sm md:grid sm:grid-cols-12 sm:grid-rows-1 sm:gap-x-6 md:gap-x-8 lg:gap-x-12">
+        <div className="md:col-span-3 md:row-span-2 md:row-end-2">
           <Phone
-            className={`bg-${tw}`}
+            className={cn(`bg-${tw}`, "max-w-[150px] md:max-w-full")}
             imgSrc={configuration.croppedImageUrl!}
           />
         </div>
 
-        <div className="mt-6 sm:col-span-9 sm:mt-0 md:row-end-1">
+        <div className="mt-6 sm:col-span-9 md:row-end-1">
           <h3 className="text-3xl font-bold tracking-tight text-gray-900">
             Your {modelName} Case
           </h3>
@@ -183,6 +172,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
             <div className="mt-8 flex justify-end pb-12">
               <Button
                 onClick={() => handleCheckout()}
+                disabled={isPending}
                 loadingText="loading"
                 className="px-4 sm:px-6 md:px-8"
               >

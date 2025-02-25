@@ -190,11 +190,11 @@ const message = {
   textAlign: "center",
 } as React.CSSProperties;
 
-const addressTitle = {
-  ...paragraph,
-  fontSize: "15px",
-  fontWeight: "bold",
-};
+// const addressTitle = {
+//   ...paragraph,
+//   fontSize: "15px",
+//   fontWeight: "bold",
+// };
 
 const footer = {
   policy: {

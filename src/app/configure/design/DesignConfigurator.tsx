@@ -55,7 +55,7 @@ const DesignConfigurator = ({
 }: DesignConfiguratorProps) => {
   const router = useRouter();
 
-  const { mutate: saveConfig } = useMutation({
+  const { mutate: saveConfig, isPending } = useMutation({
     mutationKey: ["save-config"],
     mutationFn: async (args: SaveConfigArgs) => {
       await Promise.all([saveConfiguration(), _saveConfig(args)]);
@@ -104,7 +104,7 @@ const DesignConfigurator = ({
   const phoneCaseRef = useRef<HTMLDivElement | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const { startUpload, isUploading } = useUploadThing("imageUploader");
+  const { startUpload } = useUploadThing("imageUploader");
 
   async function saveConfiguration() {
     try {
@@ -428,9 +428,10 @@ const DesignConfigurator = ({
                 }
                 size="sm"
                 className="w-full"
+                disabled={isPending}
               >
-                {isUploading ? "Creating case..." : "Continue"}
-                {isUploading ? (
+                {isPending ? "Creating case..." : "Continue"}
+                {isPending ? (
                   <Loader2 className="ml-1.5 inline size-4 animate-spin" />
                 ) : (
                   <ArrowRight className="ml-1.5 inline size-4" />

@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono, Recursive } from "next/font/google";
 
 import "./globals.css";
 import { Navbar, Footer } from "@/components";
 import { Toaster } from "sonner";
 import QueryProvider from "@/components/QueryProvider";
-import { ThemeProvider } from "@/components/theme-provider";
+import { constructMetadata } from "@/lib/utils";
 
 const recursive = Recursive({ subsets: ["latin"] });
 
@@ -19,10 +18,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "case cobra",
-  description: "Created by Gaurav",
-};
+export const metadata = constructMetadata(); 
 
 export default function RootLayout({
   children,
