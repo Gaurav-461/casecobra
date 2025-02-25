@@ -117,3 +117,11 @@ details:not([open]) summary ~ * {
 .phone-skew {
   transform: perspective(400px) rotateY(3deg) skewX(11.1deg) skewY(-10.9deg);
 }
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;}
+  body {
+    @apply bg-background text-foreground;}}
