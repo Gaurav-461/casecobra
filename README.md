@@ -41,13 +41,3 @@ Then run any of these command to install all dependencies
   
   bun install
 ```
-
-
-## Acknowledgements
-
-- [Kinde](https://link.joshtriedcoding.com/kinde) for making this project possible
-- Thanks Josh tried coding to guide me to build this kind of project
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
