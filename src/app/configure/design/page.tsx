@@ -4,7 +4,7 @@ import DesignConfigurator from "./DesignConfigurator";
 
 interface PageProps {
   searchParams: {
-    [key: string]: string | string[] | undefined;
+    [key: string]: Promise<string | string[] | undefined>;
   };
 
   // or
@@ -18,8 +18,8 @@ interface PageProps {
 
 const Page = async ({ searchParams }: PageProps) => {
   // make db call
-  const { id } = searchParams;
-  console.log("searchParams:-", searchParams);
+  const { id } = await searchParams;
+  // console.log("searchParams:-", searchParams);
 
   if (!id || typeof id !== "string") {
     return notFound();
