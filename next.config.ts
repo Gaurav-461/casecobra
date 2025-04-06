@@ -11,12 +11,13 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
-      }
+      },
     ],
   },
   typescript: {
     ignoreBuildErrors: true, // Temporary fix to bypass build errors
   },
+  crossOrigin: "anonymous",
 };
 
 export default nextConfig;
