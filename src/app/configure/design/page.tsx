@@ -10,7 +10,7 @@ interface PageProps {
   // or
 
   // searchParams: {
-  //   id: string | string[] | undefined;
+  //   id: Promise<string | string[] | undefined>;
   // }
 
   // searchParams: URLSearchParams
