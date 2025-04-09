@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         headers:[
           {
             key: "Access-Control-Allow-Origin",
-            value: "*", // Set your origin
+            value: "https://casecobra-rouge-delta.vercel.app", // Set your origin
           },
           {
             key: "Access-Control-Allow-Methods",
