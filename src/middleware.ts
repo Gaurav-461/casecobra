@@ -3,10 +3,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
-export async function middleware(request: NextRequest) {
-  const { isAuthenticated } = getKindeServerSession();
-  const authenticated = await isAuthenticated();
-  
+export async function middleware(request: NextRequest) {  
   // Clone the request headers
   const requestHeaders = new Headers(request.headers);
   
