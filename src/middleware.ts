@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
  
-const allowedOrigins = ['http://localhost:3000', 'https://casecobra-rouge-delta.vercel.app']
+const allowedOrigins = ['http://localhost:3000', 'https://casecobra-rouge-delta.vercel.app', 'https://casecobra-rouge-delta.vercel.app/api/auth/logout']
  
 const corsOptions = {
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
@@ -10,6 +10,7 @@ const corsOptions = {
 export function middleware(request: NextRequest) {
   // Check the origin from the request
   const origin = request.headers.get('origin') ?? ''
+  console.log("origin:- ",origin)
   const isAllowedOrigin = allowedOrigins.includes(origin)
  
   // Handle preflighted requests
