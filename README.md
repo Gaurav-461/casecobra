@@ -8,7 +8,6 @@ Built with the Next.js 15 App Router, Postgres, TypeScript, Tailwind & Kinde Aut
 
 - 🛠️ Complete shop built from scratch in Next.js 15
 - 💻 Beautiful landing page included
-- 🎨 Custom artworks made by a professional illustrator
 - 💳 Secret admin dashboard to manage orders
 - 🖥️ Drag-and-drop file uploads
 - 🛍️ Customers can purchase directly from you
